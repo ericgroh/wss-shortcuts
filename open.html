@@ -3,7 +3,6 @@
         <script type = "text/javascript">
                
                if ("WebSocket" in window) {
-                  alert("WebSocket is supported by your Browser!");
                   
                   // Let us open a web socket
                   var ws = new WebSocket("wss://tti.tiwiconnect.com/api/wsrpc");
@@ -12,32 +11,23 @@
                      
                      // Web Socket is connected, send data using send()
                      ws.send('{"jsonrpc":"2.0","id":3,"method":"srvWebSocketAuth","params": {"varName": "grohec.1995@gmail.com","apiKey": "826f60e4"}}');
-                     alert("Message is sent...");
                   };
                    
                   ws.onmessage = function (evt) { 
                     ws.send('{"jsonrpc":"2.0","method":"gdoModuleCommand","params":{"msgType":16,"moduleType":5,"portId":7,"moduleMsg":{"doorCommand":1},"topic":"f4b85ec52dbc"}}'); //CHANGE DEVICE ID
 
                      var received_msg = evt.data;
-                     alert("Message is received...");
                   };
                    
                   ws.onclose = function() { 
                      
                      // websocket is closed.
-                     alert("Connection is closed..."); 
                   };
-               } else {
-                 
-                  // The browser doesn't support WebSocket
-                  alert("WebSocket NOT supported by your Browser!");
-               }
+               } 
             
          </script>
     </head>
     <body>
-        <div id = "sse">
-            <a href = "javascript:WebSocketTest()">Run WebSocket</a>
-         </div>
+
     </body>
 </html>
